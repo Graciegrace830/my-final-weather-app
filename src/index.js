@@ -9,7 +9,9 @@ function displayTemp(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  let currentTemperature = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+
+  let currentTemperature = Math.round(celsiusTemp);
   let currentTemp = document.querySelector("h1");
   currentTemp.innerHTML = `${currentTemperature}`;
 
@@ -107,3 +109,28 @@ if (thisMinute < 10) {
 timeToday.innerHTML = `${thisHour}:${thisMinute}`;
 
 axios.get(theUrl).then(displayTemp);
+
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("h1");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let tempElement = document.querySelector("h1");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celcius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);

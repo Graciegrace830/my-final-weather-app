@@ -53,6 +53,11 @@ h2 {
   text-decoration: none;
 }
 
+.col-6-text .active {
+  cursor: default;
+  color: rgb(135, 135, 135);
+}
+
 ul {
   margin: 0;
   padding: 0;
