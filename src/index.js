@@ -33,7 +33,7 @@ function showForecast(response) {
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "85b1a28ca46b3f3c328f27d1cd004107";
+  let apiKey = "dff5c692192605ee5ed7f95b423ae857";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
@@ -152,7 +152,7 @@ if (thisMinute < 10) {
 }
 timeToday.innerHTML = `${thisHour}:${thisMinute}`;
 
-axios.get(apiUrl).then(displayTemp);
+//axios.get(apiUrl).then(displayTemp);
 
 function showFahrenheitTemp(event) {
   event.preventDefault();
